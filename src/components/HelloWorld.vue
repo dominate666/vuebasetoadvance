@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    HelloWorld
     <!-- <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -32,11 +31,22 @@
 </template>
 
 <script>
-// import "./assets/css/common.css"
+
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  created(){
+    this.getMode()
+  },
+  methods:{
+    getMode(){
+      this.$instance.get("/adv/info",{
+          params:{"id":2}
+      }).then(res=>{
+        console.log("特定",res.data)
+      })
+      
+
+    }
   }
 }
 </script>
