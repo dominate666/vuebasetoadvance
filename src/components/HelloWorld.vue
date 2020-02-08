@@ -27,13 +27,21 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul> -->
+     <ul>
+       <li v-for="(item,index) in list" :key="index">{{item.name}}————{{item.age}}</li>
+     </ul>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'HelloWorld',
+  data(){
+    return{
+       list:[],
+       age:0
+    }
+  },
   created(){
     this.getMode()
   },
@@ -43,6 +51,10 @@ export default {
           params:{"id":2}
       }).then(res=>{
         console.log("特定",res.data)
+        this.list=res.data.arr;
+        this.list.map((item)=>{
+          this.age=item.name
+        })
       })
       
 

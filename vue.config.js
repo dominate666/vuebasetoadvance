@@ -1,4 +1,5 @@
 const mockdata=require("./mock/data.json")
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports={
     publicPath:process.env.NODE_ENV==='procuction'?'/vuebase/':"/",
     outputDir:"dist",
@@ -15,4 +16,10 @@ module.exports={
         }
     },
     lintOnSave: false,//关闭eslint
+    configureWebpack:{
+        plugins:[
+            new BundleAnalyzerPlugin()
+        ]
+    }
+    
 }
