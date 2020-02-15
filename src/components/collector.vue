@@ -30,13 +30,13 @@
      <ul>
        <li v-for="(item,index) in list" :key="index">{{item.name}}————{{item.age}}</li>
      </ul>
-     <div id="main">aaa</div>
+      <button @click="goPackage">package</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'collector',
   data(){
     return{
        list:[],
@@ -50,7 +50,7 @@ export default {
   },
   methods:{
     getMode(){
-      console.log("000",$("#main").html())
+      // console.log("000",$("#main").html())
       this.$instance.get("/adv/info",{
           params:{"id":2}
       }).then(res=>{
@@ -62,6 +62,11 @@ export default {
       })
       
 
+    },
+    goPackage(){
+      this.$router.push({
+         path:"/package"
+      })
     }
   }
 }

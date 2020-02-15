@@ -2,16 +2,21 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 Vue.use(VueRouter)
 export default new VueRouter({
-     mode:"history",
+    //  mode:"history",
      routes:[
          {
              path:"/",
-             redirect:"/helloWorld"
+             redirect:"/collector"
          },
          {
-             path:"/helloWorld",
-             name:"HelloWorld",
-             component:()=>import("@/components/HelloWorld")
-         }
+             path:"/collector",
+             name:"collector",
+             component:()=>import("@/components/collector")
+         },
+         {
+            path:"/package",
+            name:"package",
+            component:()=>import("@/components/package")
+        }
      ]
 })

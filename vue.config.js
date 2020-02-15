@@ -20,7 +20,7 @@ module.exports={
     },
     lintOnSave: false,//关闭eslint
     chainWebpack:(config)=>{
-         config.output.chunkFilename="[name].[hash].js"
+         
     },
     configureWebpack:{
         plugins:[
