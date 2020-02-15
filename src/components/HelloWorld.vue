@@ -44,7 +44,9 @@ export default {
     }
   },
   created(){
-    this.getMode()
+     this.$nextTick(()=>{
+         this.getMode()
+     })
   },
   methods:{
     getMode(){
