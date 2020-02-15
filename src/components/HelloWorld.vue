@@ -30,6 +30,7 @@
      <ul>
        <li v-for="(item,index) in list" :key="index">{{item.name}}————{{item.age}}</li>
      </ul>
+     <div id="main">aaa</div>
   </div>
 </template>
 
@@ -47,6 +48,7 @@ export default {
   },
   methods:{
     getMode(){
+      console.log("000",$("#main").html())
       this.$instance.get("/adv/info",{
           params:{"id":2}
       }).then(res=>{
