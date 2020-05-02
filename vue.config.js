@@ -1,6 +1,5 @@
 const webpack=require("webpack");
 const mockdata=require("./mock/data.json")
-let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin=require("terser-webpack-plugin");
 
 module.exports={
@@ -24,7 +23,6 @@ module.exports={
     },
     configureWebpack:{
         plugins:[
-            new BundleAnalyzerPlugin(),
             
         ],
        
