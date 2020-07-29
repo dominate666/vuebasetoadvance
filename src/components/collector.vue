@@ -31,6 +31,26 @@
        <li v-for="(item,index) in list" :key="index">{{item.name}}————{{item.age}}</li>
      </ul>
       <button @click="goPackage">package</button>
+     <el-table
+    :data="mock"
+    style="width: 100%"
+    @row-click="getId"
+    >
+    <el-table-column
+      label="年龄"
+      width="180">
+       <template slot-scope="scope">
+        {{scope.row.age}}
+       </template>
+    </el-table-column>
+    <el-table-column
+      label="姓名"
+      width="180">
+      <template slot-scope="scope">
+        {{scope.row.name}}
+      </template>
+    </el-table-column>
+  </el-table>
   </div>
 </template>
 
@@ -40,15 +60,30 @@ export default {
   data(){
     return{
        list:[],
-       age:0
+       age:0,
+       mock:[
+         {
+           age:1,
+           name:"lisi"
+         },
+         {
+          age:2,
+          name:"wer"
+         }
+       ]
     }
   },
   created(){
      this.$nextTick(()=>{
-         this.getMode()
+        //  this.getMode()
+        this.getMock()
      })
   },
   methods:{
+    getId(row,column,event){
+      let index=this.mock.indexOf(row)
+      console.log("555555",index)
+    },
     getMode(){
       // console.log("000",$("#main").html())
       this.$instance.get("/adv/info",{
@@ -62,6 +97,11 @@ export default {
       })
       
 
+    },
+    getMock(){
+      this.$instance.get("/m/listmore.json?pageNo=2&pageSize=15").then(res=>{
+          console.log("666",res)
+      })
     },
     goPackage(){
       this.$router.push({
